@@ -15,3 +15,9 @@ Upplýsingatækniskólinn
 Reykjavík
 
 Tölvubraut
+
+
+Dagbók
+
+1.12.207
+Er búinn að ná að sýna kortið af Íslandi og búinn að gera slider. Á núna eftir að setja jarðskjálftana inn
