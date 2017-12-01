@@ -27,3 +27,58 @@ function initMap(){  //í þessari breytu þá næ ég í kortið og ákveð sta
     });
 }
 
+function getCircle(size) {                                                                   
+        return {
+          path: google.maps.SymbolPath.CIRCLE,                                               
+          fillColor: 'red',                                                                  
+          fillOpacity: .2,                                                                   
+          scale: Math.pow(2, size * 2.5) / 2,                                                
+          strokeColor: 'white',                                                             
+          strokeWeight: .5                                                                   
+        };
+}
+
+function setMarker(data) {                                                                   
+        for (let i = 0; i < data.results.length; i++) {                                      
+          let lat = data.results[i].latitude;                                                
+          let lon = data.results[i].longitude;                                               
+
+
+          // Búa til infowindow gögn ***********************************************************************
+          let contentString = '<div id="content">' + 
+                                '<div id="siteNotice">'+
+                                '</div>'+                                                    
+                                '<h1 id="firstHeading">' + data.results[i].humanReadableLocation + '</h1>'+   
+                                '<div id="bodyContent">'+
+                                '<p> Tími: ' + data.results[i].timestamp + '</p>' +          
+                                '<p> Stærð: ' + data.results[i].size + '</p>' +               
+                                '<p> Dýpt: ' + data.results[i].depth + '</p>' +             
+                                '</div>'+ 
+                              '</div>';
+          //************************************************************************************************
+
+          let latLng = new google.maps.LatLng(lat,lon);                                      
+          let infowindow = new google.maps.InfoWindow({                                      
+            content: contentString                                                           
+          });
+
+          let circle1 = new google.maps.Marker({                                             
+            position: latLng,                                                                         
+            map: map,                                                                        
+            icon: getCircle(data.results[i].size)                                           
+          });
+          let marker = new google.maps.Marker({                                              
+            position: latLng,                                                                        
+            map: map,                                                                       
+          });
+          marker.addListener('click', function() {                                         
+          infowindow.open(map, marker);                                                      
+          });
+          circle1.addListener('click', function() {                                          
+          infowindow.open(map, circle1);                                                     
+          });
+
+
+        }
+
+
