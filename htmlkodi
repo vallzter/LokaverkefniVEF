@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Lokaverkefni VSF
+	</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="vlok.css"> 
+</head>
+<body>
+<div id="map"></div>
+​
+
+<div id="slidecontainer">
+  <p>Richter Scale</p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+</div>
+
+<script src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="vlok.js"></script>  
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaGFdVZmRUR5reT1WHaDFaWl8F6nmXbmc&callback=initMap">
+    </script>
+  </body>
+</body>
+</html>
